@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+	
+	 <!-- 规则 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每小时滚动文件 -->
+            <!--<fileNamePattern>logs/log.%d{yyyy-MM-dd_HH}.%i.log</fileNamePattern>-->
+
+            <!-- 每天滚动文件 -->
+            <fileNamePattern>logs/log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>366</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf-8</charset>
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n</pattern>
+        </encoder>
+    </appender>
+	
+	<logger name="org.springframework.web" level="DEBUG"/>
+</configuration>
