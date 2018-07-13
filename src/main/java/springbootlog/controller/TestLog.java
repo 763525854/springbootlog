@@ -24,7 +24,10 @@ public class TestLog {
 	@RequestMapping(value = "/test1", method = RequestMethod.POST)
 	public String hello(@RequestBody String param1) {
 		logger.debug("haha,i am debug");
-		logger.info("haha,i am info");
+		boolean b = true;
+		while (b) {
+			logger.info("haha,i am info asdfasdfsdfasdfasdfsadfas");
+		}
 		return "hello";
 	}
 }
