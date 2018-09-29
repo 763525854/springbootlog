@@ -3,6 +3,8 @@
  */
 package springbootlog.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,15 @@ public class TestLog {
 		while (b) {
 			logger.info("haha,i am info asdfasdfsdfasdfasdfsadfas");
 		}
+		return "hello";
+	}
+	
+	@RequestMapping(value = "/test2", method = RequestMethod.GET)
+	public String hello(HttpServletRequest request) {
+		logger.info(request.getParameter("name"));
+		String name=request.getParameter("name");
+		logger.debug("haha,i am debug");
+		System.out.println(name);
 		return "hello";
 	}
 }
